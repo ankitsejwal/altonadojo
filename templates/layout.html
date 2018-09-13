@@ -9,6 +9,16 @@
     <script src="main.js"></script>
 </head>
 <body>
+    <head>
+        <p>
+            <a href="{{ url_for('home')}}">home</a>
+            <a href="{{ url_for('term')}}">term</a>
+            <a href="{{ url_for('parent')}}">parent</a>
+            <a href="{{ url_for('child')}}">child</a>
+            <a href="{{ url_for('admission')}}">admission</a>
+            <a href="{{ url_for('home')}}">extra</a>
+        </p>
+    </head>
     {% block body %} {% endblock %}
 </body>
 </html>

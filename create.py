@@ -1,6 +1,7 @@
 import os
 from flask import Flask
-from models import db, term, user, child, parent, volunteer
+from models import *
+# from models import term, user, child, parent, volunteer, member
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
@@ -14,6 +15,7 @@ def main():
     child.db.create_all()
     parent.db.create_all()
     volunteer.db.create_all()
+    member.db.create_all()
 
 
 if __name__ == '__main__':

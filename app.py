@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, session, redirect, render_template, url_for
 from forms import SignupForm
 from models import db, User
 
@@ -25,7 +25,10 @@ def signup():
             newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
             db.session.add(newuser)
             db.session.commit()
-            return "success"
+
+            session['email'] = newuser.email
+            return redirect(url_for('home'))
+
     elif request.method == 'GET':
         return render_template('signup.html', form=form)
 

@@ -1,7 +1,10 @@
 import os
 from flask import Flask, request, render_template
+from models import db
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
+db.init(app)
 
 
 @app.route('/')

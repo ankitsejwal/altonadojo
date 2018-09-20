@@ -53,6 +53,12 @@ def signin():
         return render_template('signin.html', form=form)
 
 
+@app.route('/signout')
+def signout():
+    session.pop('email', None)
+    return redirect('term')
+
+
 @app.route('/term')
 def term():
     return render_template('term.html')

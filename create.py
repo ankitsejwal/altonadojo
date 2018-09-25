@@ -16,6 +16,7 @@ def main():
     parent.db.create_all()
     volunteer.db.create_all()
     member.db.create_all()
+    parentchild.db.create_all()
 
 
 if __name__ == '__main__':

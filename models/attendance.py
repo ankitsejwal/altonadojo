@@ -3,6 +3,7 @@ from models import db
 
 class Attendance(db.Model):
     __tablename__ = "attendance"
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
     member_id = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     day = db.Column(db.String, nullable=False)

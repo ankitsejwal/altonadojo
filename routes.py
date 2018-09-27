@@ -1,7 +1,8 @@
 import os
+from datetime import datetime
 from flask import Flask, request, render_template, redirect, url_for
 from random import randint
-from models import db, Member
+from models import db, Member, Attendance
 
 
 dynamic_url = str(randint(1000000, 9000000))
@@ -11,18 +12,28 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL'
 db.init_app(app)
 
 
-@app.route('/')
-def home():
-    return redirect(url_for('attendance'))
+# @app.route('/')
+# def home():
+#     return redirect(url_for('attendance'))
 
 
-@app.route('/' + dynamic_url, methods=['POST', 'GET'])
+# @app.route('/' + dynamic_url, methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def attendance():
     parents = Member.query.filter_by(member_type="parent").all()
     childs = Member.query.filter_by(member_type="child").all()
-    print(parents)
     if request.method == 'POST':
-        pass
+        date = datetime.now().strftime('%x')
+        day = datetime.now().strftime('%A')
+
+        parent_id = request.form.get("selected_parent")
+        child_id = request.form.get("selected_child")
+
+        parent = Attendance(parent_id, date, day)
+        parent.present()
+        child = Attendance(child_id, date, day)
+        child.present()
+
     return render_template('attendance.html', parents=parents, childs=childs)
 
 

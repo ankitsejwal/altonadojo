@@ -13,13 +13,13 @@
     crossorigin="anonymous"></script>
 </head>
 <body class="container">
-    <form action="{{url_for('attendance')}}" method="post">
+    <form action="{{url_for('attendance')}}" method="POST">
         <div class="form-group">
             <label for="">Select Parent</label>
-            <select name="" id="" class="parent form-control custom-select" placeholder="select parent">
+            <select name="selected_parent" id="" class="parent form-control custom-select" placeholder="select parent">
                 <option value="" selected>Choose ...</option>
                 {% for parent in parents %}
-                    <option value="">{{ parent.first_name}} {{parent.last_name }}</option>
+                    <option value="{{parent.id}}">{{ parent.first_name}} {{parent.last_name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -27,10 +27,10 @@
 
         <div class="form-group">
             <label for="">Select Child</label>
-            <select name="" id="" class="child form-control" placeholder="select child">
+            <select name="selected_child" id="" class="child form-control" placeholder="select child">
                 <option value="" selected>Choose ...</option>                
                 {% for child in childs %}
-                <option value="">{{ child.first_name }} {{ child.last_name }}</option>
+                <option value="{{child.id}}">{{ child.first_name }} {{ child.last_name }}</option>
                 {% endfor %}
             </select>
         </div>

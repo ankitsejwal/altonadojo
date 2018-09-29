@@ -6,3 +6,5 @@ from .child import *
 from .term import *
 from .user import *
 from .member import *
+from .parentchild import *
+from .attendance import *

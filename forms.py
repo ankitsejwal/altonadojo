@@ -16,4 +16,3 @@ class LoginForm(Form):
     password = PasswordField('Enter password', validators=[DataRequired('Please enter password')])
     submit = SubmitField('Sign in')
 
-

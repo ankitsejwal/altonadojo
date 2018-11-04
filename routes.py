@@ -12,14 +12,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+# path to home route
+@app.route('/')
+def home():
+    return redirect(url_for('attendance'))
 
-# @app.route('/')
-# def home():
-#     return redirect(url_for('attendance'))
 
-
-# @app.route('/' + dynamic_url, methods=['POST', 'GET'])
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/' + dynamic_url, methods=['POST', 'GET'])
 def attendance():
     parents = Member.query.filter_by(member_type="parent").all()
     childs = Member.query.filter_by(member_type="child").all()

@@ -4,11 +4,14 @@ from flask import Flask, request, session, redirect, render_template, url_for
 from models import db, User
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.config.from_pyfile('config.py ')
+
 db.init_app(app)
 
-app.secret_key = 'development-key'
+# app.secret_key = 'development-key'
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -37,5 +40,5 @@ def signout():
     return redirect('term')
 
 
-debug = os.environ.get('FLASK_DEBUG')
-app.run(debug=debug)
+# debug = os.environ.get('FLASK_DEBUG')
+app.run(debug=DEBUG)

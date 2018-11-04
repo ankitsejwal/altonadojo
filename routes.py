@@ -8,8 +8,11 @@ from models import db, Member, Attendance
 dynamic_url = str(randint(1000000, 9000000))
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.config.from_pyfile('config.py')
+
 db.init_app(app)
 
 # path to home route
@@ -43,5 +46,7 @@ def qr():
     return render_template('qr.html', dynamic_url=url)
 
 
-debug = os.environ.get('FLASK_DEBUG')
-app.run(port=5002, debug=debug)
+# debug = os.environ.get('FLASK_DEBUG')
+
+if __name__ == '__main__':
+    app.run()

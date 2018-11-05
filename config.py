@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = os.environ.get('FLASK_DEBUG')
 SQLALCHEMY_DATABASE_URI = os.environ.get('ALTONADOJO_DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SECRET_KEY = 'altonadojo2018'
+SECRET_KEY = 'development-key'

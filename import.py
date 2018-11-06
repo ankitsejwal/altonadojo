@@ -4,8 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from models import db, Member
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_pyfile('config.py')
 db.init_app(app)
 
 

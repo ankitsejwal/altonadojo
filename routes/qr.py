@@ -3,22 +3,15 @@ from datetime import datetime
 from flask import Flask, request, render_template, redirect, url_for
 from random import randint
 from models import db, Member, Attendance
+from app import app
 
 
 dynamic_url = str(randint(1000000, 9000000))
 
-app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('ALTONADOJO_DATABASE_URL')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-app.config.from_pyfile('config.py')
-
-db.init_app(app)
-
 # path to home route
-@app.route('/')
-def home():
-    return redirect(url_for('attendance'))
+# @app.route('/')
+# def home():
+#     return redirect(url_for('attendance'))
 
 
 @app.route('/' + dynamic_url, methods=['POST', 'GET'])
@@ -44,9 +37,3 @@ def attendance():
 def qr():
     url = request.url_root + dynamic_url
     return render_template('qr.html', dynamic_url=url)
-
-
-# debug = os.environ.get('FLASK_DEBUG')
-
-if __name__ == '__main__':
-    app.run()

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block PageTitle %} Signup {% endblock %}
+
+{% block body %}
+
+    <form action="/signup" method="POST">
+        <input type="text" placeholder="Child Name" name="child-name"><br>
+        <input type="text" placeholder="Birth Year" name="birth-year"><br>
+        <input type="text" placeholder="Gender" name="gender"><br>
+        <input type="text" placeholder="Parent name" name="parent"><br>
+        <input type="text" placeholder="Email" name="email"><br>
+        <input type="text" placeholder="Phone" name="phone"><br>
+        <input type="password" placeholder="Password" name="password">
+        <button>Signup</button>
+    </form>
+
+{% endblock %}

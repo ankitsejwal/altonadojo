@@ -4,12 +4,12 @@ from app import app
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        return render_template('signup.html', username=username, password=password)
 
+        email = request.form.get('email')
+        password = request.form.get('password')
+        return render_template('asignup.html')
     elif request.method == 'GET':
-        return render_template('signup.html')
+        return render_template('asignup.html')
 
 
 @app.route('/signin', methods=['GET', 'POST'])
@@ -18,7 +18,7 @@ def signin():
         return 'True'
 
     elif request.method == 'GET':
-       return 'True'
+       return render_template('asignin.html')
 
 
 @app.route('/signout')
